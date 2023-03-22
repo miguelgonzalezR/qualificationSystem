@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <link th:href="@{/css/loginres.css}" rel="stylesheet">
+    
+    <title>Document</title>
+    
+    
+</head>
+<body>
+
+	<br>
+    <div class="container">
+    	<br>
+        <div class="img-login">
+        	
+        	<br><br><img th:src="@{/img/alumnos.png}" width="700" height="598"/>
+        </div>
+        
+    
+        <div class="form">
+            <div>
+                <h1>Bievenido a </h1>
+                <h1 style="color: #6C63FF;">Qualification System</h1>
+            </div>
+
+    
+            <form class="container-form" th:action="@{/login}" method="post">
+                <!-- <img class="svg2" src="svg1.svg" alt=""> -->
+                <input  type="text" placeholder="Usuario" name="username" required>
+                <!-- <img src="svg2.svg" alt=""> -->
+                <input class="svg2" type="password" placeholder="Contrasena" name="password" required>
+                <button type="submit" class="btn-inicio">Iniciar sesion</button>
+            </form><br><br>
+            
+		    
+		    <div th:if="${param.error}" class="alert">
+  				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  				Usuario o contraseña incorrecta.
+			</div>
+		    
+		    
+		    <div th:if="${param.logout}" class="alert2" role="alert">
+		    		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		            Se ha cerrado la sección con éxito .
+		    </div>
+		    
+		    <br>
+		      
+            <a th:href="@{/recuperar}" class="contra">¿Has olvidado tu contraseña?</a>
+		    
+            
+        </div>
+    </div>
+    
+</html>

@@ -1,0 +1,41 @@
+/* The alert message box */
+.alert {
+  background-color: #dc3741; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  width: 100%;
+  margin-top: 0px;
+  height:5%;
+  justify-content: center;
+}
+
+.mens{
+
+  top: 0%;
+  margin-top: -5px;
+}
+
+.alert2 {
+  padding: 20px;
+  background-color: rgb(0, 64, 128); /* Red */
+  color: white;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}

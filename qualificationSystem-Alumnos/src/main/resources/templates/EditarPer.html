@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link th:href="@{/css/menuA.css}" rel="stylesheet">
+    <link th:href="@{/css/perfil.css}" rel="stylesheet">
+    <link th:href="@{/css/alert.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+<body>
+
+<style>
+		.titu {
+			margin-top: 3%;
+		}
+
+		@media (max-width:1059px) {
+			.h2 {
+				display: none;
+			}
+
+			.container-style {
+				width: 95%;
+				margin: 0 auto;
+			}
+
+			.titu {
+				margin-top: 25%;
+			}
+		
+		}
+		
+		.alert{
+			height:5%!important;
+		}
+		
+		.alert2{
+			height:5%!important;
+		}
+		
+		.mens{
+			color:white;
+		}
+		
+	</style>
+
+<div style="display: flex;">
+
+<header th:insert="Menu.html :: menu"> </header>
+
+<div class="container mt-3 col-9">
+      <div>
+      
+      <div th:if="${men != null}" class="alert">
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<p class="mens" th:text="${men}"></p>
+			</div>
+			
+		<div th:if="${men == null}" class="alert2">
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<p class="mens">Una vez actualizado su perfil se cerrara sesión para guardar los cambios</p>
+			</div>
+    
+
+        <div class="main-container container">
+
+            <div class="container-info">
+                <h1  th:text="${usua.get().getNombre() + ' ' + usua.get().getApellido()}"></h1>
+                <h4 th:text="${usua.get().getIdgrado().getGrado()}"></h4>
+                <h5 th:text="${ 'Seccion' + ' ' + usua.get().getIdgrado().getSeccion()}"></h5>
+            </div>
+    
+            <form th:action="@{/guardarPer}" th:object=${usua} method="post" class="form-contaniners">
+                <h4 style="color: black; text-align: left;">Perfil</h4>
+                
+                <div class="inputs" style="display: none">
+                        <p>ID:</p>
+                        <input th:field="*{idal}" type="text" placeholder="ID">
+                    </div>
+                
+                <div class="info-container-input">
+                    <div class="inputs">
+                        <p>Nombre:</p>
+                        <input th:field="*{nombre}" type="text" >
+                    </div>
+    
+                    <div class="inputs">
+                        <p>Apellidos:</p>
+                        <input th:field="*{apellido}" type="text" >
+                    </div>
+    
+                    <div class="inputs">
+                        <p>Usuario:</p>
+                        <input th:field="*{usuario}" type="text" >
+                    </div>
+    
+                    <div class="inputs">
+                        <p>Correo:</p>
+                        <input th:field="*{correo}" type="text" >
+                    </div>
+                </div>
+                
+                <h4 style="color: black;text-align: left;">Cambiar Contrasena</h4>
+                <div class="form-contaniners">
+    
+                    <div class="info-container-input">
+        
+                        
+                        <div class="inputs">
+                            <p>Nueva contrasena:</p>
+                            <input th:field="*{clave}" type="password">
+                        </div>
+        
+                        
+                        <div class="inputs">
+                            <p>Confirmar contrasena:</p>
+                            <input th:field="*{claveco}"  type="password">
+                        </div>
+    
+                    </div>
+                </div>
+    
+                <input type="submit" class="btn-guardar" value="Guardar cambios">
+            </form>
+            
+        </div>
+
+
+    </div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
