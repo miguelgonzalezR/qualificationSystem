@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link th:href="@{/css/menuA.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/src/main/resources/static/css/menuA.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" >
+    
+        <title>Secciones</title>
+    </head>
+    <body>
+ 
+<style>
+
+.container-style {
+		margin-left: 22%;
+	}
+
+.titu{
+	margin-top:3%;
+}
+
+@media (max-width:1059px) {
+    .h2{
+        display: none;
+    }
+
+    .container-style{
+        width: 95%;
+        margin: 0 auto;
+        margin-left: 0%;
+    }
+    
+    .titu{
+	margin-top:25%;
+}
+}
+
+</style>       
+
+
+<div style="display: flex;">
+
+<header th:insert="Administrador/Menu.html :: menu"> </header>
+
+
+
+
+<div class="container-sm container-style col-9">
+    <div class="text-center">
+        <h1 class="fw-bold titu">Secciones</h1>
+    </div>
+    
+    <a th:href="@{/NuevaS}" type="button" class="btn mt-3" style="background-color: #6C63FF; color: white;">Agregar</a><br><br>
+    
+    <form th:action="@{/seccionesaB}" method="post">
+		<div class="row">
+			<div class="col-md-3 mb-3">
+				<input type="text" name="buscar" class="form-control" placeholder="Buscador por grados y secciones">
+			</div>
+			
+			<div class="col-md-4 mb-3">
+				<input type="submit" class="btn btn-primary" value="Buscar" style="background-color: #3D34B0;">
+			</div>
+			
+		</div>
+	</form>
+    
+    <div class="table-responsive"> <br>
+
+          
+          
+          <table class="table table table-hover  mt-2  border">
+            <thead style="background-color: #6C63FF; color: white;">
+              <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Grado</th>
+                <th scope="col">Seción</th>
+                <th scope="col">Acción</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="grados: ${grados}">
+                <th scope="row" style="color:#6C63FF" th:text="${grados.idgr}"></th>
+                <td th:text="${grados.grado}"></td>
+                <td th:text="${grados.seccion}"></td>
+                <td> 
+                	<a th:href="@{/editars/}+${grados.idgr}" type="button" class="btn border" style="color:#6C63FF"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                	<a th:onclick="eliminar([[${grados.idgr}]])" type="button" class="btn border text-danger fw-bold"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                </td>
+                
+                
+                
+    
+              </tr>
+            </tbody>
+          </table>
+          
+          
+    </div>  
+    
+    
+
+</div>
+
+
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="js/funciones.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+		integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+
+        
+    </body>
+</html>
